@@ -2,9 +2,9 @@
     --bg: #0a0a0a;
     --bg-elevated: #111111;
     --text: #e5e5e5;
-    --text-muted: #666666;
+    --text-muted: #888888;
     --text-dim: #444444;
-    --accent: #888888;
+    --accent: #e5e5e5;
     --border: #222222;
     --success: #4ade80;
     --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -29,7 +29,7 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
-    cursor: default;
+    cursor: none;
 }
 
 ::selection {
@@ -38,12 +38,83 @@ body {
 }
 
 /* ===== CANVAS BACKGROUND ===== */
-#shapes {
+#bg-canvas {
     position: fixed;
     inset: 0;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.4;
+}
+
+/* ===== CUSTOM CURSOR ===== */
+.cursor-dot {
+    width: 5px;
+    height: 5px;
+    background: var(--text);
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s, height 0.2s, background 0.2s;
+}
+
+.cursor-outline {
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(229, 229, 229, 0.4);
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99998;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, border-color 0.3s, background 0.3s;
+}
+
+body:hover .cursor-dot,
+body:hover .cursor-outline {
+    opacity: 1;
+}
+
+/* Cursor hover states */
+.cursor-hover .cursor-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--success);
+}
+
+.cursor-hover .cursor-outline {
+    width: 48px;
+    height: 48px;
+    border-color: rgba(74, 222, 128, 0.4);
+    background: rgba(74, 222, 128, 0.05);
+}
+
+/* Click ripple */
+.ripple {
+    position: fixed;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    pointer-events: none;
+    z-index: 99997;
+    animation: rippleAnim 0.6s ease-out forwards;
+    transform: translate(-50%, -50%) scale(0);
+}
+
+@keyframes rippleAnim {
+    to {
+        transform: translate(-50%, -50%) scale(4);
+        opacity: 0;
+    }
+}
+
+/* Hide custom cursor on touch devices */
+@media (pointer: coarse) {
+    body { cursor: auto; }
+    .cursor-dot, .cursor-outline { display: none !important; }
 }
 
 /* ===== NAVIGATION ===== */
@@ -149,7 +220,7 @@ body {
     font-size: 1.125rem;
     font-weight: 400;
     color: var(--text-muted);
-    max-width: 520px;
+    max-width: 560px;
     line-height: 1.7;
     margin-bottom: 48px;
 }
@@ -317,10 +388,6 @@ body {
     border-top: 1px solid var(--border);
 }
 
-.project-item:hover {
-    opacity: 1;
-}
-
 .project-list:hover .project-item:not(:hover) {
     opacity: 0.35;
 }
@@ -448,7 +515,7 @@ body {
 .contact-channels {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 0;
 }
 
 .channel {
@@ -456,13 +523,13 @@ body {
     flex-direction: column;
     gap: 4px;
     text-decoration: none;
-    padding: 16px 0;
+    padding: 20px 0;
     border-bottom: 1px solid var(--border);
     transition: all 0.3s;
 }
 
 .channel:hover {
-    padding-left: 8px;
+    padding-left: 12px;
     border-color: var(--text);
 }
 
@@ -477,6 +544,37 @@ body {
     font-size: 1.0625rem;
     color: var(--text);
     font-weight: 500;
+}
+
+/* ===== WHATSAPP FLOAT ===== */
+.wa-float {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 56px;
+    height: 56px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.6rem;
+    text-decoration: none;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+    transition: transform 0.3s var(--ease);
+    animation: waPulse 2s ease-in-out infinite;
+}
+
+.wa-float:hover {
+    transform: scale(1.1);
+    animation: none;
+}
+
+@keyframes waPulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3); }
+    50% { box-shadow: 0 4px 30px rgba(37, 211, 102, 0.6); }
 }
 
 /* ===== FOOTER ===== */
@@ -572,6 +670,14 @@ body {
         flex-direction: column;
         gap: 16px;
         text-align: center;
+    }
+
+    .wa-float {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
     }
 }
 

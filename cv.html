@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CV de Adamgy Adamo Tembe — Profissional Polivalente em Tecnologia, Software e Infraestruturas.">
     <title>CV — Adamgy Adamo Tembe</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -140,6 +141,12 @@
         .print-btn:hover {
             border-color: var(--text);
         }
+        /* Justified text for readability and ATS compatibility */
+        .justify-text {
+            text-align: justify;
+            text-align-last: left;
+            hyphens: auto;
+        }
         @media print {
             .nav, .back-nav, .print-btn, .cv-footer {
                 display: none !important;
@@ -148,8 +155,20 @@
                 padding: 40px;
             }
             body {
-                background: #fff;
-                color: #000;
+                background: #fff !important;
+                color: #000 !important;
+            }
+            .cv-header h1, .cv-item-title, .cv-section h2, .cv-skill span:first-child {
+                color: #000 !important;
+            }
+            .cv-header p, .cv-item-place, .cv-item ul, .cv-item li, .cv-skill, .cv-tag {
+                color: #333 !important;
+            }
+            .cv-tag {
+                border-color: #ccc !important;
+            }
+            .justify-text {
+                text-align: left;
             }
         }
         @media (max-width: 640px) {
@@ -158,6 +177,9 @@
             }
             .cv-page {
                 padding: 100px 24px 60px;
+            }
+            .justify-text {
+                text-align: left;
             }
         }
     </style>
@@ -179,17 +201,13 @@
         
         <header class="cv-header">
             <h1>Adamgy Adamo Tembe</h1>
-            <p>Engenheiro de Software & Especialista em Infraestruturas de Rede — Pemba, Moçambique</p>
+            <p>Profissional Polivalente em Tecnologia, Software e Infraestruturas — Pemba, Moçambique</p>
         </header>
 
         <section class="cv-section">
             <h2>Perfil Profissional</h2>
-            <p style="color: var(--text-muted); line-height: 1.8; font-size: 1rem;">
-                Profissional certificado em Tecnologia da Informação, Engenharia de Redes e Desenvolvimento de Software, 
-                com sólida experiência prática no suporte, gestão de infraestruturas críticas e automação de processos. 
-                Especializado no desenvolvimento de aplicações multiplataforma com Flutter e Node.js, com domínio em 
-                versionamento Git/GitHub e CI/CD. Experiência robusta em administração de bases de dados (MySQL, PostgreSQL, SQLite), 
-                gestão de sistemas ERP e arquitetura de redes LAN/WAN, Starlink, cabeamento estruturado e enlaces PtP.
+            <p class="justify-text" style="color: var(--text-muted); line-height: 1.8; font-size: 1rem;">
+                Profissional polivalente com sólida trajetória em funções técnicas e administrativas, destacando-se pela capacidade de adaptação e resolução de problemas em ambientes dinâmicos. Certificado em Tecnologia da Informação, Engenharia de Redes e Desenvolvimento de Software, combino competências em desenvolvimento de aplicações multiplataforma (Flutter, Node.js), administração de bases de dados (MySQL, PostgreSQL, SQLite, Turso), gestão de infraestruturas de rede (Starlink, PtP, cabeamento estruturado) e design gráfico (Photoshop, Illustrator, Premiere, Canva). Como fundador do VMP SaaS, desenvolvi um ERP completo offline-first para o mercado moçambicano. Paralelamente, presto consultoria TI directa, instalo sistemas CFTV, opero drones para inspecção técnica e audiovisual, e gerencio redes sociais para negócios locais. Reconhecido pela proatividade, organização, atenção ao detalhe e compromisso com resultados.
             </p>
         </section>
 
@@ -206,6 +224,19 @@
                     <li>Desenvolvimento e gestão do ERP VMP SaaS desde a concepção até à comercialização</li>
                     <li>Arquitetura completa: Flutter desktop, Node.js backend, Turso DB, licenciamento SaaS</li>
                     <li>Formação de clientes e suporte técnico contínuo</li>
+                </ul>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-item-header">
+                    <span class="cv-item-title">Gestor de Redes Sociais</span>
+                    <span class="cv-item-date">2025 — Presente</span>
+                </div>
+                <div class="cv-item-place">Jotas Grill Restaurant & Bar, Pemba</div>
+                <ul>
+                    <li>Criação de conteúdo visual (fotografia, design gráfico, vídeos curtos)</li>
+                    <li>Gestão de publicações no Instagram e Facebook</li>
+                    <li>Estratégia de crescimento digital e engagement da comunidade local</li>
                 </ul>
             </div>
 
@@ -253,14 +284,16 @@
 
             <div class="cv-item">
                 <div class="cv-item-header">
-                    <span class="cv-item-title">Engenheiro de Redes & TI</span>
+                    <span class="cv-item-title">Consultor TI & Redes</span>
                     <span class="cv-item-date">2022 — Presente</span>
                 </div>
-                <div class="cv-item-place">Freelancer / Consultor Independente</div>
+                <div class="cv-item-place">Freelancer / Consultor Independente, Pemba</div>
                 <ul>
                     <li>Implementação de infraestruturas de rede, instalações Starlink, sistemas CFTV</li>
                     <li>Consultoria TI e suporte técnico para empresas em Pemba e região</li>
                     <li>Reparação de hardware, instalação de SO (Windows, Linux) e gestão de parques informáticos</li>
+                    <li>Operações com drone para inspecção, eventos e produção audiovisual</li>
+                    <li>Desenvolvimento de websites, design gráfico e gestão de redes sociais</li>
                 </ul>
             </div>
         </section>
@@ -321,13 +354,16 @@
                 <div class="cv-skill"><span>HTML / CSS / Web</span><span>Avançado</span></div>
                 <div class="cv-skill"><span>SQL / SQLite / Turso</span><span>Avançado</span></div>
                 <div class="cv-skill"><span>Git / GitHub / CI/CD</span><span>Intermédio</span></div>
+                <div class="cv-skill"><span>Adobe Photoshop / Illustrator</span><span>Avançado</span></div>
+                <div class="cv-skill"><span>Adobe Premiere / Canva</span><span>Avançado</span></div>
                 <div class="cv-skill"><span>Redes Starlink & PtP</span><span>Avançado</span></div>
                 <div class="cv-skill"><span>Cabeamento Estruturado</span><span>Avançado</span></div>
                 <div class="cv-skill"><span>CFTV & Segurança</span><span>Intermédio</span></div>
                 <div class="cv-skill"><span>Windows / Linux / SO</span><span>Avançado</span></div>
                 <div class="cv-skill"><span>Hardware & Reparação</span><span>Avançado</span></div>
-                <div class="cv-skill"><span>Primavera ERP</span><span>Intermédio</span></div>
+                <div class="cv-skill"><span>Gestão de Redes Sociais</span><span>Avançado</span></div>
                 <div class="cv-skill"><span>Operações com Drones</span><span>Intermédio</span></div>
+                <div class="cv-skill"><span>Primavera ERP</span><span>Intermédio</span></div>
             </div>
         </section>
 
@@ -335,9 +371,11 @@
             <h2>Idiomas</h2>
             <div class="cv-grid">
                 <div class="cv-skill"><span>Português</span><span>Nativo</span></div>
-                <div class="cv-skill"><span>Inglês</span><span>Intermédio</span></div>
-                <div class="cv-skill"><span>Macua / Nhungue</span><span>Nativo</span></div>
+                <div class="cv-skill"><span>Changana</span><span>Fluente</span></div>
+                <div class="cv-skill"><span>Inglês</span><span>Avançado</span></div>
+                <div class="cv-skill"><span>Macua</span><span>Básico</span></div>
                 <div class="cv-skill"><span>Francês</span><span>Básico</span></div>
+                <div class="cv-skill"><span>Nyungue</span><span>Básico</span></div>
             </div>
         </section>
 

@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Adamgy Adamo Tembe — Engenheiro de Software, Infraestruturas de Rede e Consultor TI em Moçambique.">
+    <meta name="description" content="Adamgy Adamo Tembe — Desenvolvedor de Software, Infraestruturas de Rede e Consultor TI em Moçambique.">
     <meta name="author" content="Adamgy Adamo Tembe">
     <meta name="theme-color" content="#0a0a0a">
     <meta property="og:title" content="Adamgy Adamo Tembe">
-    <meta property="og:description" content="Engenheiro de Software & Infraestruturas — Pemba, Moçambique.">
+    <meta property="og:description" content="Desenvolvedor de Software & Infraestruturas — Pemba, Moçambique.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://adamgy.vmpsaas.com">
     
@@ -16,12 +16,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a0a0a'/%3E%3Ctext x='50' y='68' font-size='50' font-weight='800' text-anchor='middle' fill='%23e5e5e5' font-family='Arial'%3EA%3C/text%3E%3C/svg%3E">
 </head>
 <body>
-    <canvas id="shapes"></canvas>
+    <canvas id="bg-canvas"></canvas>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
     
     <nav class="nav">
         <a href="/" class="nav-logo">Adamgy Tembe</a>
@@ -36,14 +39,14 @@
     </nav>
 
     <header class="hero">
-        <p class="hero-eyebrow">Portfólio 2026</p>
+        <p class="hero-eyebrow">Portfólio 2026 — Pemba, MZ</p>
         <h1 class="hero-title">
             Olá, sou<br>
             <span class="hero-name">Adamgy Adamo Tembe</span>
         </h1>
         <p class="hero-desc">
-            Engenheiro de Software, desenvolvedor do <strong>VMP SaaS</strong> 
-            e especialista em infraestruturas de rede em Moçambique.
+            Desenvolvedor de software, especialista em infraestruturas de rede e consultor TI em Moçambique. 
+            Fundador do <strong>VMP SaaS</strong>, com experiência em gestão de redes sociais e design gráfico para negócios locais.
         </p>
         <div class="hero-actions">
             <a href="#projectos" class="hero-link">→ Ver projectos</a>
@@ -57,23 +60,37 @@
             <div class="section-grid">
                 <div class="section-text">
                     <p>
-                        Sou engenheiro moçambicano com base em <strong>Pemba, Cabo Delgado</strong>. 
-                        Desenvolvo software empresarial e implemento infraestruturas de rede críticas.
+                        Nasci na cidade de Maputo e cresci na Ilha de Inhaca (Kanyaka). Actualmente resido em 
+                        <strong>Pemba, Cabo Delgado</strong>, onde desenvolvo projectos tecnológicos e audiovisuais.
+                    </p>
+                    <p>
+                        Sou profissional moçambicano especializado no desenvolvimento de software empresarial e 
+                        infraestruturas de rede críticas.
                     </p>
                     <p>
                         Como fundador do <strong>VMP SaaS</strong>, construí um ERP completo offline-first 
-                        para o mercado moçambicano — POS, stock, contabilidade, IRPS, SAF-T, multi-armazém 
-                        e licenciamento SaaS. O sistema gere negócios em Pemba e expande-se nacionalmente.
+                        para o mercado moçambicano — POS, stock, contabilidade com IRPS e SAF-T, multi-armazém, 
+                        dashboard remoto e licenciamento SaaS. O sistema gere negócios em Pemba e expande-se nacionalmente.
                     </p>
                     <p>
-                        Além do código, instalo redes Starlink profissionais, sistemas CFTV, 
-                        opero drones para inspecção técnica e presto consultoria TI directa.
+                        Paralelamente, desenvolvo trabalhos de gestão de redes sociais, design gráfico e produção de 
+                        conteúdo visual para negócios locais, combinando criatividade com estratégia digital.
+                    </p>
+                    <p>
+                        Além do código, instalo redes Starlink profissionais, sistemas CFTV, opero drones para 
+                        inspecção técnica, cobertura de eventos e videoclipes, e presto consultoria TI directa. 
+                        Domino design gráfico (Photoshop, Illustrator, Premiere, Canva) para complementar 
+                        projectos digitais e audiovisuais.
                     </p>
                 </div>
                 <div class="section-meta">
                     <div class="meta-item">
                         <span class="meta-label">Localização</span>
-                        <span class="meta-value">Pemba, MZ</span>
+                        <span class="meta-value">Pemba, Cabo Delgado — MZ</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Origem</span>
+                        <span class="meta-value">Maputo / Ilha de Inhaca</span>
                     </div>
                     <div class="meta-item">
                         <span class="meta-label">Disponibilidade</span>
@@ -86,6 +103,10 @@
                     <div class="meta-item">
                         <span class="meta-label">Email</span>
                         <a href="mailto:adamgyadamo@gmail.com" class="meta-value link">adamgyadamo@gmail.com</a>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">WhatsApp</span>
+                        <a href="https://wa.me/258846166104" class="meta-value link">+258 84 616 6104</a>
                     </div>
                 </div>
             </div>
@@ -103,7 +124,7 @@
                         <p class="project-desc">
                             ERP completo offline-first para Moçambique. POS, gestão de stock, 
                             contabilidade com IRPS e SAF-T, multi-armazém, dashboard remoto e 
-                            licenciamento SaaS integrado. Flutter + Node.js.
+                            licenciamento SaaS integrado. Desenvolvido em Flutter + Node.js.
                         </p>
                         <div class="project-tags">
                             <span>Flutter</span>
@@ -138,7 +159,7 @@
 
                 <article class="project-item">
                     <div class="project-main">
-                        <h3 class="project-title">Infraestruturas de Rede</h3>
+                        <h3 class="project-title">Redes & Infraestruturas</h3>
                         <p class="project-desc">
                             Instalação de Starlink profissional, redes PtP AirFiber, 
                             cabeamento estruturado, firewalls e sistemas CFTV para empresas em Pemba.
@@ -157,7 +178,7 @@
 
                 <article class="project-item">
                     <div class="project-main">
-                        <h3 class="project-title">Suporte Técnico & Hardware</h3>
+                        <h3 class="project-title">Assistência Técnica & Hardware</h3>
                         <p class="project-desc">
                             Reparação e manutenção de computadores, instalação de sistemas operativos 
                             (Windows, Linux), gestão de parques informáticos e recuperação de dados.
@@ -183,28 +204,33 @@
             <div class="service-list">
                 <div class="service-row">
                     <span class="service-num">01</span>
-                    <h4 class="service-name">Desenvolvimento de Software</h4>
-                    <p class="service-detail">ERP, POS, aplicações desktop/mobile, plataformas SaaS</p>
+                    <h4 class="service-name">Redes & Starlink</h4>
+                    <p class="service-detail">Instalação de Starlink (Gen 2/Mini), configuração de firewalls e redes PtP AirFiber</p>
                 </div>
                 <div class="service-row">
                     <span class="service-num">02</span>
-                    <h4 class="service-name">Redes & Conectividade</h4>
-                    <p class="service-detail">Starlink, PtP, cabeamento estruturado, firewalls</p>
+                    <h4 class="service-name">Segurança & CFTV</h4>
+                    <p class="service-detail">Câmaras IP, vedação eléctrica e controlo de acessos biométricos</p>
                 </div>
                 <div class="service-row">
                     <span class="service-num">03</span>
-                    <h4 class="service-name">Segurança & CFTV</h4>
-                    <p class="service-detail">Videovigilância, controlo de acessos, auditoria</p>
+                    <h4 class="service-name">Assistência Técnica</h4>
+                    <p class="service-detail">Reparação de hardware, manutenção preventiva e recuperação de dados</p>
                 </div>
                 <div class="service-row">
                     <span class="service-num">04</span>
-                    <h4 class="service-name">Operações com Drones</h4>
-                    <p class="service-detail">Inspecção técnica, mapeamento, audiovisual 4K</p>
+                    <h4 class="service-name">Drones & Audiovisual</h4>
+                    <p class="service-detail">Cinematografia aérea, mapeamento técnico, inspecções, eventos e videoclipes</p>
                 </div>
                 <div class="service-row">
                     <span class="service-num">05</span>
-                    <h4 class="service-name">Consultoria TI</h4>
-                    <p class="service-detail">Auditoria, formação, suporte técnico especializado</p>
+                    <h4 class="service-name">Websites & Sistemas</h4>
+                    <p class="service-detail">Portfólios, e-commerce, sistemas POS customizados e design gráfico</p>
+                </div>
+                <div class="service-row">
+                    <span class="service-num">06</span>
+                    <h4 class="service-name">Import & Export</h4>
+                    <p class="service-detail">Logística de equipamentos tecnológicos e desembaraço aduaneiro</p>
                 </div>
             </div>
         </div>
@@ -217,12 +243,12 @@
                 <div class="contact-lead">
                     <h2 class="contact-title">Vamos conversar.</h2>
                     <p class="contact-desc">
-                        Estou disponível para projectos de software, consultoria de redes 
-                        e parcerias tecnológicas em Moçambique.
+                        Estou disponível para projectos de software, consultoria de redes, 
+                        cobertura de eventos com drone e gestão de redes sociais em Moçambique.
                     </p>
                 </div>
                 <div class="contact-channels">
-                    <a href="https://wa.me/258846166104" target="_blank" class="channel">
+                    <a href="https://wa.me/258846166104?text=Olá,%20gostaria%20de%20pedir%20um%20orçamento" target="_blank" class="channel">
                         <span class="channel-label">WhatsApp</span>
                         <span class="channel-value">+258 84 616 6104</span>
                     </a>
@@ -238,6 +264,10 @@
                         <span class="channel-label">VMP SaaS</span>
                         <span class="channel-value">vmpsaas.com →</span>
                     </a>
+                    <a href="https://www.instagram.com/jotas_grill/" target="_blank" class="channel">
+                        <span class="channel-label">Cliente — Jotas Grill</span>
+                        <span class="channel-value">@jotas_grill →</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -251,9 +281,13 @@
                 <a href="privacidade.html">Privacidade</a>
                 <a href="login.html">Admin</a>
             </div>
-            <p class="footer-copy">© 2026</p>
+            <p class="footer-copy">© 2026 — <span id="visit-count">...</span> visitas</p>
         </div>
     </footer>
+
+    <a href="https://wa.me/258846166104?text=Olá,%20gostaria%20de%20pedir%20um%20orçamento" class="wa-float" target="_blank" rel="noopener" aria-label="Pedir orçamento pelo WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
     <script src="script.js"></script>
 </body>

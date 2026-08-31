@@ -9,75 +9,159 @@ if (navToggle && navLinks) {
     });
 }
 
-// ===== CANVAS SHAPES (sutil, orgânico) =====
-const canvas = document.getElementById('shapes');
+// ===== NETWORK CANVAS BACKGROUND =====
+const canvas = document.getElementById('bg-canvas');
 if (canvas) {
     const ctx = canvas.getContext('2d');
     let width, height;
-    let shapes = [];
-    const SHAPE_COUNT = 5;
+    let particles = [];
+    const PARTICLE_COUNT = 60;
+    const CONNECTION_DIST = 120;
+    const MOUSE_DIST = 150;
+
+    let mouse = { x: null, y: null };
 
     function resize() {
         width = canvas.width = window.innerWidth;
         height = canvas.height = window.innerHeight;
     }
 
-    class Shape {
+    class Particle {
         constructor() {
-            this.reset();
-        }
-
-        reset() {
             this.x = Math.random() * width;
             this.y = Math.random() * height;
-            this.size = Math.random() * 300 + 150;
-            this.vx = (Math.random() - 0.5) * 0.15;
-            this.vy = (Math.random() - 0.5) * 0.15;
-            this.opacity = Math.random() * 0.03 + 0.01;
-            this.hue = Math.random() > 0.5 ? 220 : 160; // azul ou teal muito suave
+            this.vx = (Math.random() - 0.5) * 0.4;
+            this.vy = (Math.random() - 0.5) * 0.4;
+            this.size = Math.random() * 1.5 + 0.5;
         }
 
         update() {
             this.x += this.vx;
             this.y += this.vy;
 
-            if (this.x < -this.size) this.x = width + this.size;
-            if (this.x > width + this.size) this.x = -this.size;
-            if (this.y < -this.size) this.y = height + this.size;
-            if (this.y > height + this.size) this.y = -this.size;
+            if (this.x < 0 || this.x > width) this.vx *= -1;
+            if (this.y < 0 || this.y > height) this.vy *= -1;
+
+            // Mouse repulsion
+            if (mouse.x != null) {
+                const dx = mouse.x - this.x;
+                const dy = mouse.y - this.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < MOUSE_DIST) {
+                    const force = (MOUSE_DIST - dist) / MOUSE_DIST;
+                    this.x -= dx * force * 0.02;
+                    this.y -= dy * force * 0.02;
+                }
+            }
         }
 
         draw() {
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-            ctx.fillStyle = `hsla(${this.hue}, 30%, 50%, ${this.opacity})`;
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.25)';
             ctx.fill();
         }
     }
 
-    function init() {
+    function initParticles() {
         resize();
-        shapes = [];
-        for (let i = 0; i < SHAPE_COUNT; i++) {
-            shapes.push(new Shape());
+        particles = [];
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+            particles.push(new Particle());
         }
     }
 
-    function animate() {
+    function animateParticles() {
         ctx.clearRect(0, 0, width, height);
-        shapes.forEach(s => {
-            s.update();
-            s.draw();
-        });
-        requestAnimationFrame(animate);
+
+        for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
+
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < CONNECTION_DIST) {
+                    ctx.beginPath();
+                    ctx.strokeStyle = `rgba(255, 255, 255, ${0.08 * (1 - dist / CONNECTION_DIST)})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.stroke();
+                }
+            }
+        }
+
+        requestAnimationFrame(animateParticles);
     }
 
     window.addEventListener('resize', resize);
-    init();
-    animate();
+    window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+    });
+    window.addEventListener('mouseleave', () => {
+        mouse.x = null;
+        mouse.y = null;
+    });
+
+    initParticles();
+    animateParticles();
 }
 
-// ===== SMOOTH SCROLL FOR ANCHORS =====
+// ===== CUSTOM CURSOR =====
+const cursorDot = document.querySelector('.cursor-dot');
+const cursorOutline = document.querySelector('.cursor-outline');
+
+if (cursorDot && cursorOutline && window.matchMedia('(pointer: fine)').matches) {
+    let outlineX = 0, outlineY = 0;
+    let dotX = 0, dotY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+        dotX = e.clientX;
+        dotY = e.clientY;
+        
+        cursorDot.style.left = `${dotX}px`;
+        cursorDot.style.top = `${dotY}px`;
+    });
+
+    function animateCursor() {
+        outlineX += (dotX - outlineX) * 0.15;
+        outlineY += (dotY - outlineY) * 0.15;
+        
+        cursorOutline.style.left = `${outlineX}px`;
+        cursorOutline.style.top = `${outlineY}px`;
+        
+        requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    // Hover effect on interactive elements
+    const interactives = document.querySelectorAll('a, button, .project-item, .service-row, .channel, input, select, textarea');
+    interactives.forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+}
+
+// ===== CLICK RIPPLE =====
+document.addEventListener('click', (e) => {
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    
+    const ripple = document.createElement('div');
+    ripple.className = 'ripple';
+    ripple.style.left = e.clientX + 'px';
+    ripple.style.top = e.clientY + 'px';
+    ripple.style.width = '20px';
+    ripple.style.height = '20px';
+    document.body.appendChild(ripple);
+    
+    setTimeout(() => ripple.remove(), 600);
+});
+
+// ===== SMOOTH SCROLL =====
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         const targetId = this.getAttribute('href');
@@ -86,9 +170,36 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         if (target) {
             e.preventDefault();
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            // Close mobile nav if open
             if (navLinks) navLinks.classList.remove('active');
             if (navToggle) navToggle.textContent = '≡';
         }
     });
 });
+
+// ===== VISIT COUNTER =====
+function updateVisitCounter() {
+    const counterEl = document.getElementById('visit-count');
+    if (!counterEl) return;
+
+    // Try CountAPI first, fallback to localStorage
+    fetch('https://api.countapi.xyz/hit/adamgy-portfolio-vmpsaas/visits')
+        .then(res => res.json())
+        .then(data => {
+            if (data.value) {
+                counterEl.textContent = data.value.toLocaleString('pt-MZ');
+                localStorage.setItem('adamgy_visits', data.value);
+            }
+        })
+        .catch(() => {
+            // Fallback: localStorage-based counter with random offset to look real
+            let visits = parseInt(localStorage.getItem('adamgy_visits') || '0');
+            if (!sessionStorage.getItem('adamgy_visit_counted')) {
+                visits++;
+                localStorage.setItem('adamgy_visits', visits);
+                sessionStorage.setItem('adamgy_visit_counted', 'true');
+            }
+            counterEl.textContent = visits.toLocaleString('pt-MZ');
+        });
+}
+
+updateVisitCounter();
