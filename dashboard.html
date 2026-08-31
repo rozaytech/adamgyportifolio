@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Gestão — Adamgy Tembe</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a0a0a'/%3E%3Ctext x='50' y='68' font-size='50' font-weight='800' text-anchor='middle' fill='%23e5e5e5' font-family='Arial'%3EA%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dash-style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+    <button class="menu-btn" id="mToggle">≡</button>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="logo-box">
+            <span class="logo-mark">A</span>
+            <span class="logo-text">Adamgy<span class="logo-accent">Admin</span></span>
+        </div>
+        <nav class="sidebar-nav">
+            <button class="nav-item active" data-sec="home">Painel Geral</button>
+            <button class="nav-item" data-sec="projetos">Projectos</button>
+            <button class="nav-item" data-sec="clientes">Clientes</button>
+            <button class="nav-item" data-sec="financeiro">Financeiro</button>
+            <button class="nav-item" data-sec="tarefas">Tarefas</button>
+            <button class="nav-item" data-sec="logs">Auditoria</button>
+            <hr class="sidebar-divider">
+            <a href="index.html" class="nav-item" style="color: var(--success)">← Site Público</a>
+            <button id="btnLogout" class="nav-item logout">Sair da Sessão</button>
+        </nav>
+    </aside>
+
+    <main class="content-area">
+        <header class="top-bar">
+            <h2 id="greet-left">...</h2>
+            <div class="user-info-box">
+                <div class="clock-display" id="clock">00:00:00</div>
+                <div class="user-badge"><span id="user-right">Admin</span></div>
+            </div>
+        </header>
+
+        <div class="scroll-content">
+            <section id="sec-home" class="spa-section active">
+                <div class="mini-grid">
+                    <div class="card">
+                        <h3>Projectos Activos</h3>
+                        <div class="val" id="count-projetos">0</div>
+                    </div>
+                    <div class="card">
+                        <h3>Receita Total (MT)</h3>
+                        <div class="val" id="rev-home">0.00</div>
+                    </div>
+                    <div class="card">
+                        <h3>Tarefas Pendentes</h3>
+                        <div class="val" id="count-tarefas">0</div>
+                    </div>
+                    <div class="card">
+                        <h3>Clientes</h3>
+                        <div class="val" id="count-clientes">0</div>
+                    </div>
+                </div>
+                <div class="flex-row">
+                    <div class="card chart-container">
+                        <h3>Distribuição por Área</h3>
+                        <div style="height: 280px; position: relative;">
+                            <canvas id="circleChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="card" style="width: 280px; min-width: 250px;">
+                        <h3>Acções Rápidas</h3>
+                        <button onclick="window.exportPDF()" class="btn-action" style="width: 100%; margin-bottom: 12px;">Gerar Relatório PDF</button>
+                        <button onclick="window.openModal()" class="btn-action" style="width: 100%; margin-bottom: 12px; background: var(--text); color: var(--bg);">+ Novo Projecto</button>
+                        <p style="font-size: 11px; color: var(--dim); line-height: 1.5;">Os dados são armazenados localmente no navegador.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="sec-projetos" class="spa-section">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+                    <h2 style="font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em;">Gestão de Projectos</h2>
+                    <button onclick="window.openModal()" class="btn-action">+ Novo Projecto</button>
+                </div>
+                <div class="card table-card">
+                    <table id="main-table">
+                        <thead>
+                            <tr>
+                                <th>Projecto</th>
+                                <th>Cliente</th>
+                                <th>Categoria</th>
+                                <th>Valor (MT)</th>
+                                <th>Estado</th>
+                                <th>Operações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="project-list"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="sec-clientes" class="spa-section">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+                    <h2 style="font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em;">Base de Clientes</h2>
+                    <button onclick="window.openClientModal()" class="btn-action">+ Novo Cliente</button>
+                </div>
+                <div class="card table-card">
+                    <table>
+                        <thead>
+                            <tr><th>Nome</th><th>Contacto</th><th>Email</th><th>Tipo</th><th>Operações</th></tr>
+                        </thead>
+                        <tbody id="client-list"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="sec-financeiro" class="spa-section">
+                <h2 style="font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 20px;">Resumo Financeiro</h2>
+                <div class="mini-grid">
+                    <div class="card">
+                        <h3>Receita Prevista</h3>
+                        <div class="val" id="fat-total">0.00 MT</div>
+                    </div>
+                    <div class="card">
+                        <h3>Ticket Médio</h3>
+                        <div class="val" id="fat-media">0.00 MT</div>
+                    </div>
+                    <div class="card">
+                        <h3>Projectos Concluídos</h3>
+                        <div class="val" id="fat-concluidos">0</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Detalhamento por Categoria</h3>
+                    <div id="fat-detalhes"></div>
+                </div>
+            </section>
+
+            <section id="sec-tarefas" class="spa-section">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 12px;">
+                    <h2 style="font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em;">Lista de Tarefas</h2>
+                    <button onclick="window.openTaskModal()" class="btn-action">+ Nova Tarefa</button>
+                </div>
+                <div class="card table-card">
+                    <table>
+                        <thead>
+                            <tr><th>Tarefa</th><th>Projecto</th><th>Prioridade</th><th>Estado</th><th>Operações</th></tr>
+                        </thead>
+                        <tbody id="task-list"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="sec-logs" class="spa-section">
+                <h2 style="font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 20px;">Terminal de Auditoria</h2>
+                <div class="terminal" id="terminal-logs"></div>
+            </section>
+        </div>
+    </main>
+
+    <div id="modal-project" class="modal">
+        <div class="modal-card">
+            <h3 id="modal-title">Novo Projecto</h3>
+            <form id="form-project">
+                <input type="hidden" id="edit-id">
+                <label>Nome do Projecto</label>
+                <input type="text" id="proj-name" required placeholder="Ex: VMP SaaS ERP">
+                <label>Cliente</label>
+                <input type="text" id="proj-client" required placeholder="Nome do cliente">
+                <label>Categoria</label>
+                <select id="proj-category">
+                    <option value="Software">Desenvolvimento de Software</option>
+                    <option value="Redes">Redes & Conectividade</option>
+                    <option value="Web">Web Development</option>
+                    <option value="CFTV">Segurança & CFTV</option>
+                    <option value="Drones">Operações com Drones</option>
+                    <option value="Consultoria">Consultoria TI</option>
+                    <option value="Hardware">Reparação & Hardware</option>
+                </select>
+                <label>Valor (MT)</label>
+                <input type="number" id="proj-price" required placeholder="0.00">
+                <label>Estado</label>
+                <select id="proj-status">
+                    <option value="Activo">Activo</option>
+                    <option value="Pendente">Pendente</option>
+                    <option value="Concluído">Concluído</option>
+                    <option value="Cancelado">Cancelado</option>
+                </select>
+                <button type="submit" class="btn-action" style="width: 100%; margin-top: 8px;">SALVAR PROJECTO</button>
+                <button type="button" onclick="window.closeModal()" class="btn-cancel">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="modal-client" class="modal">
+        <div class="modal-card">
+            <h3 id="modal-client-title">Novo Cliente</h3>
+            <form id="form-client">
+                <input type="hidden" id="edit-client-id">
+                <label>Nome</label>
+                <input type="text" id="client-name" required>
+                <label>Contacto</label>
+                <input type="text" id="client-phone" required>
+                <label>Email</label>
+                <input type="email" id="client-email">
+                <label>Tipo</label>
+                <select id="client-type">
+                    <option value="Empresa">Empresa</option>
+                    <option value="Particular">Particular</option>
+                    <option value="Governo">Governo</option>
+                </select>
+                <button type="submit" class="btn-action" style="width: 100%; margin-top: 8px;">SALVAR CLIENTE</button>
+                <button type="button" onclick="window.closeClientModal()" class="btn-cancel">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="modal-task" class="modal">
+        <div class="modal-card">
+            <h3 id="modal-task-title">Nova Tarefa</h3>
+            <form id="form-task">
+                <input type="hidden" id="edit-task-id">
+                <label>Descrição</label>
+                <input type="text" id="task-desc" required>
+                <label>Projecto</label>
+                <input type="text" id="task-project" placeholder="Nome do projecto associado">
+                <label>Prioridade</label>
+                <select id="task-priority">
+                    <option value="Alta">Alta</option>
+                    <option value="Média">Média</option>
+                    <option value="Baixa">Baixa</option>
+                </select>
+                <label>Estado</label>
+                <select id="task-status">
+                    <option value="Pendente">Pendente</option>
+                    <option value="Em Progresso">Em Progresso</option>
+                    <option value="Concluída">Concluída</option>
+                </select>
+                <button type="submit" class="btn-action" style="width: 100%; margin-top: 8px;">SALVAR TAREFA</button>
+                <button type="button" onclick="window.closeTaskModal()" class="btn-cancel">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="dash-script.js"></script>
+</body>
+</html>

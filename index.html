@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Adamgy Adamo Tembe — Engenheiro de Software, Infraestruturas de Rede e Consultor TI em Moçambique.">
+    <meta name="author" content="Adamgy Adamo Tembe">
+    <meta name="theme-color" content="#0a0a0a">
+    <meta property="og:title" content="Adamgy Adamo Tembe">
+    <meta property="og:description" content="Engenheiro de Software & Infraestruturas — Pemba, Moçambique.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://adamgy.vmpsaas.com">
+    
+    <title>Adamgy Adamo Tembe</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a0a0a'/%3E%3Ctext x='50' y='68' font-size='50' font-weight='800' text-anchor='middle' fill='%23e5e5e5' font-family='Arial'%3EA%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+    <canvas id="shapes"></canvas>
+    
+    <nav class="nav">
+        <a href="/" class="nav-logo">Adamgy Tembe</a>
+        <div class="nav-links">
+            <a href="#sobre">Sobre</a>
+            <a href="#projectos">Projectos</a>
+            <a href="#servicos">Serviços</a>
+            <a href="cv.html">CV</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+        <button class="nav-toggle" aria-label="Menu">≡</button>
+    </nav>
+
+    <header class="hero">
+        <p class="hero-eyebrow">Portfólio 2026</p>
+        <h1 class="hero-title">
+            Olá, sou<br>
+            <span class="hero-name">Adamgy Adamo Tembe</span>
+        </h1>
+        <p class="hero-desc">
+            Engenheiro de Software, desenvolvedor do <strong>VMP SaaS</strong> 
+            e especialista em infraestruturas de rede em Moçambique.
+        </p>
+        <div class="hero-actions">
+            <a href="#projectos" class="hero-link">→ Ver projectos</a>
+            <a href="cv.html" class="hero-link secondary">→ Ver currículo completo</a>
+        </div>
+    </header>
+
+    <section id="sobre" class="section">
+        <div class="section-inner">
+            <p class="section-label">01 — Sobre</p>
+            <div class="section-grid">
+                <div class="section-text">
+                    <p>
+                        Sou engenheiro moçambicano com base em <strong>Pemba, Cabo Delgado</strong>. 
+                        Desenvolvo software empresarial e implemento infraestruturas de rede críticas.
+                    </p>
+                    <p>
+                        Como fundador do <strong>VMP SaaS</strong>, construí um ERP completo offline-first 
+                        para o mercado moçambicano — POS, stock, contabilidade, IRPS, SAF-T, multi-armazém 
+                        e licenciamento SaaS. O sistema gere negócios em Pemba e expande-se nacionalmente.
+                    </p>
+                    <p>
+                        Além do código, instalo redes Starlink profissionais, sistemas CFTV, 
+                        opero drones para inspecção técnica e presto consultoria TI directa.
+                    </p>
+                </div>
+                <div class="section-meta">
+                    <div class="meta-item">
+                        <span class="meta-label">Localização</span>
+                        <span class="meta-value">Pemba, MZ</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Disponibilidade</span>
+                        <span class="meta-value status-open">Aberto a projectos</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Experiência</span>
+                        <span class="meta-value">5+ anos</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Email</span>
+                        <a href="mailto:adamgyadamo@gmail.com" class="meta-value link">adamgyadamo@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projectos" class="section section-dim">
+        <div class="section-inner">
+            <p class="section-label">02 — Projectos</p>
+            
+            <div class="project-list">
+                <article class="project-item">
+                    <div class="project-main">
+                        <h3 class="project-title">VMP SaaS</h3>
+                        <p class="project-desc">
+                            ERP completo offline-first para Moçambique. POS, gestão de stock, 
+                            contabilidade com IRPS e SAF-T, multi-armazém, dashboard remoto e 
+                            licenciamento SaaS integrado. Flutter + Node.js.
+                        </p>
+                        <div class="project-tags">
+                            <span>Flutter</span>
+                            <span>Node.js</span>
+                            <span>SQLite</span>
+                            <span>Turso</span>
+                        </div>
+                    </div>
+                    <div class="project-side">
+                        <a href="https://vmpsaas.com" target="_blank" class="project-link">→ vmpsaas.com</a>
+                    </div>
+                </article>
+
+                <article class="project-item">
+                    <div class="project-main">
+                        <h3 class="project-title">Landing Page VMP SaaS</h3>
+                        <p class="project-desc">
+                            Website institucional com SEO avançado, Schema.org, Open Graph, 
+                            PWA, animações CSS e integração com GitHub Releases API.
+                        </p>
+                        <div class="project-tags">
+                            <span>HTML5</span>
+                            <span>CSS3</span>
+                            <span>JavaScript</span>
+                            <span>SEO</span>
+                        </div>
+                    </div>
+                    <div class="project-side">
+                        <a href="https://vmpsaas.com" target="_blank" class="project-link">→ vmpsaas.com</a>
+                    </div>
+                </article>
+
+                <article class="project-item">
+                    <div class="project-main">
+                        <h3 class="project-title">Infraestruturas de Rede</h3>
+                        <p class="project-desc">
+                            Instalação de Starlink profissional, redes PtP AirFiber, 
+                            cabeamento estruturado, firewalls e sistemas CFTV para empresas em Pemba.
+                        </p>
+                        <div class="project-tags">
+                            <span>Starlink</span>
+                            <span>AirFiber</span>
+                            <span>CFTV</span>
+                            <span>Redes</span>
+                        </div>
+                    </div>
+                    <div class="project-side">
+                        <span class="project-link disabled">→ Serviço presencial</span>
+                    </div>
+                </article>
+
+                <article class="project-item">
+                    <div class="project-main">
+                        <h3 class="project-title">Suporte Técnico & Hardware</h3>
+                        <p class="project-desc">
+                            Reparação e manutenção de computadores, instalação de sistemas operativos 
+                            (Windows, Linux), gestão de parques informáticos e recuperação de dados.
+                        </p>
+                        <div class="project-tags">
+                            <span>Hardware</span>
+                            <span>Windows</span>
+                            <span>Linux</span>
+                            <span>SO</span>
+                        </div>
+                    </div>
+                    <div class="project-side">
+                        <span class="project-link disabled">→ Serviço presencial</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicos" class="section">
+        <div class="section-inner">
+            <p class="section-label">03 — Serviços</p>
+            <div class="service-list">
+                <div class="service-row">
+                    <span class="service-num">01</span>
+                    <h4 class="service-name">Desenvolvimento de Software</h4>
+                    <p class="service-detail">ERP, POS, aplicações desktop/mobile, plataformas SaaS</p>
+                </div>
+                <div class="service-row">
+                    <span class="service-num">02</span>
+                    <h4 class="service-name">Redes & Conectividade</h4>
+                    <p class="service-detail">Starlink, PtP, cabeamento estruturado, firewalls</p>
+                </div>
+                <div class="service-row">
+                    <span class="service-num">03</span>
+                    <h4 class="service-name">Segurança & CFTV</h4>
+                    <p class="service-detail">Videovigilância, controlo de acessos, auditoria</p>
+                </div>
+                <div class="service-row">
+                    <span class="service-num">04</span>
+                    <h4 class="service-name">Operações com Drones</h4>
+                    <p class="service-detail">Inspecção técnica, mapeamento, audiovisual 4K</p>
+                </div>
+                <div class="service-row">
+                    <span class="service-num">05</span>
+                    <h4 class="service-name">Consultoria TI</h4>
+                    <p class="service-detail">Auditoria, formação, suporte técnico especializado</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="section section-dim">
+        <div class="section-inner">
+            <p class="section-label">04 — Contacto</p>
+            <div class="contact-layout">
+                <div class="contact-lead">
+                    <h2 class="contact-title">Vamos conversar.</h2>
+                    <p class="contact-desc">
+                        Estou disponível para projectos de software, consultoria de redes 
+                        e parcerias tecnológicas em Moçambique.
+                    </p>
+                </div>
+                <div class="contact-channels">
+                    <a href="https://wa.me/258846166104" target="_blank" class="channel">
+                        <span class="channel-label">WhatsApp</span>
+                        <span class="channel-value">+258 84 616 6104</span>
+                    </a>
+                    <a href="tel:+258870018297" class="channel">
+                        <span class="channel-label">Telefone</span>
+                        <span class="channel-value">+258 87 001 8297</span>
+                    </a>
+                    <a href="mailto:adamgyadamo@gmail.com" class="channel">
+                        <span class="channel-label">Email</span>
+                        <span class="channel-value">adamgyadamo@gmail.com</span>
+                    </a>
+                    <a href="https://vmpsaas.com" target="_blank" class="channel">
+                        <span class="channel-label">VMP SaaS</span>
+                        <span class="channel-value">vmpsaas.com →</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <p>Adamgy Adamo Tembe — Pemba, Moçambique</p>
+            <div class="footer-links">
+                <a href="termos.html">Termos</a>
+                <a href="privacidade.html">Privacidade</a>
+                <a href="login.html">Admin</a>
+            </div>
+            <p class="footer-copy">© 2026</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

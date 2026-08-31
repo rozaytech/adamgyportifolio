@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV — Adamgy Adamo Tembe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .cv-page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 120px 40px 80px;
+        }
+        .cv-header {
+            margin-bottom: 64px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+        }
+        .cv-header h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
+        }
+        .cv-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+        .cv-section {
+            margin-bottom: 56px;
+        }
+        .cv-section h2 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-dim);
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        .cv-item {
+            margin-bottom: 28px;
+        }
+        .cv-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .cv-item-title {
+            font-size: 1.0625rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+        .cv-item-date {
+            font-size: 0.8125rem;
+            color: var(--text-dim);
+            font-weight: 400;
+        }
+        .cv-item-place {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        .cv-item ul {
+            margin: 0;
+            padding-left: 18px;
+            color: var(--text-muted);
+            font-size: 0.9375rem;
+            line-height: 1.7;
+        }
+        .cv-item li {
+            margin-bottom: 4px;
+        }
+        .cv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px 40px;
+        }
+        .cv-skill {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.9375rem;
+            color: var(--text-muted);
+        }
+        .cv-skill span:first-child {
+            color: var(--text);
+        }
+        .cv-taglist {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .cv-tag {
+            padding: 6px 14px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+        }
+        .back-nav {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            margin-bottom: 40px;
+            transition: color 0.3s;
+        }
+        .back-nav:hover {
+            color: var(--text);
+        }
+        .cv-footer {
+            margin-top: 80px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8125rem;
+            color: var(--text-dim);
+        }
+        .print-btn {
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.8125rem;
+            transition: all 0.3s;
+        }
+        .print-btn:hover {
+            border-color: var(--text);
+        }
+        @media print {
+            .nav, .back-nav, .print-btn, .cv-footer {
+                display: none !important;
+            }
+            .cv-page {
+                padding: 40px;
+            }
+            body {
+                background: #fff;
+                color: #000;
+            }
+        }
+        @media (max-width: 640px) {
+            .cv-grid {
+                grid-template-columns: 1fr;
+            }
+            .cv-page {
+                padding: 100px 24px 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="/" class="nav-logo">Adamgy Tembe</a>
+        <div class="nav-links">
+            <a href="/">Início</a>
+            <a href="/#projectos">Projectos</a>
+            <a href="cv.html">CV</a>
+            <a href="/#contacto">Contacto</a>
+        </div>
+        <button class="nav-toggle" aria-label="Menu">≡</button>
+    </nav>
+
+    <main class="cv-page">
+        <a href="/" class="back-nav">← Voltar ao portfólio</a>
+        
+        <header class="cv-header">
+            <h1>Adamgy Adamo Tembe</h1>
+            <p>Engenheiro de Software & Especialista em Infraestruturas de Rede — Pemba, Moçambique</p>
+        </header>
+
+        <section class="cv-section">
+            <h2>Perfil Profissional</h2>
+            <p style="color: var(--text-muted); line-height: 1.8; font-size: 1rem;">
+                Profissional certificado em Tecnologia da Informação, Engenharia de Redes e Desenvolvimento de Software, 
+                com sólida experiência prática no suporte, gestão de infraestruturas críticas e automação de processos. 
+                Especializado no desenvolvimento de aplicações multiplataforma com Flutter e Node.js, com domínio em 
+                versionamento Git/GitHub e CI/CD. Experiência robusta em administração de bases de dados (MySQL, PostgreSQL, SQLite), 
+                gestão de sistemas ERP e arquitetura de redes LAN/WAN, Starlink, cabeamento estruturado e enlaces PtP.
+            </p>
+        </section>
+
+        <section class="cv-section">
+            <h2>Experiência Profissional</h2>
+            
+            <div class="cv-item">
+                <div class="cv-item-header">
+                    <span class="cv-item-title">Fundador & Lead Developer</span>
+                    <span class="cv-item-date">2024 — Presente</span>
+                </div>
+                <div class="cv-item-place">VMP SaaS, Pemba</div>
+                <ul>
+                    <li>Desenvolvimento e gestão do ERP VMP SaaS desde a concepção até à comercialização</li>
+                    <li>Arquitetura completa: Flutter desktop, Node.js backend, Turso DB, licenciamento SaaS</li>
+                    <li>Formação de clientes e suporte técnico contínuo</li>
+                </ul>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-item-header">
+                    <span class="cv-item-title">Diretor Administrativo / Gestor de TI</span>
+                    <span class="cv-item-date">Fev 2024 — Ago 2025</span>
+                </div>
+                <div class="cv-item-place">Centro Médico Embondeiro, Pemba</div>
+                <ul>
+                    <li>Supervisão e integridade do parque informático, controlo físico de ativos de hardware e equipamentos de rede</li>
+                    <li>Gerenciamento de processos administrativos internos e coordenação logística geral</li>
+                    <li>Monitoramento de conectividade da rede local e suporte a sistemas internos de faturação (ERP Primavera)</li>
+                    <li>Gestão de stocks em armazéns físicos e teóricos, inventário e reconciliação</li>
+                    <li>Coordenação de transporte e acompanhamento de cronogramas de entrega</li>
+                </ul>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-item-header">
+                    <span class="cv-item-title">Gerente de Diagnósticos (Responsável do Laboratório)</span>
+                    <span class="cv-item-date">Mai 2023 — Fev 2024</span>
+                </div>
+                <div class="cv-item-place">Centro Médico Embondeiro, Tete</div>
+                <ul>
+                    <li>Supervisão de todas as atividades técnicas do laboratório clínico</li>
+                    <li>Realização e supervisão de exames em Hematologia, Bioquímica, Parasitologia, Imunologia, Urinálise e TDR</li>
+                    <li>Implementação de protocolos de biossegurança e controlo interno de qualidade</li>
+                    <li>Gestão de stocks de reagentes, consumíveis e equipamentos de precisão</li>
+                </ul>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-item-header">
+                    <span class="cv-item-title">Técnico de Laboratório</span>
+                    <span class="cv-item-date">Fev 2022 — Mai 2023</span>
+                </div>
+                <div class="cv-item-place">Centro Médico Embondeiro, Tete</div>
+                <ul>
+                    <li>Coleta, preparação e processamento de amostras biológicas</li>
+                    <li>Operação de analisadores automatizados de hematologia e bioquímica</li>
+                    <li>Aplicação de protocolos de controlo interno de qualidade</li>
+                </ul>
+            </div>
+
+            <div class="cv-item">
+                <div class="cv-item-header">
+                    <span class="cv-item-title">Engenheiro de Redes & TI</span>
+                    <span class="cv-item-date">2022 — Presente</span>
+                </div>
+                <div class="cv-item-place">Freelancer / Consultor Independente</div>
+                <ul>
+                    <li>Implementação de infraestruturas de rede, instalações Starlink, sistemas CFTV</li>
+                    <li>Consultoria TI e suporte técnico para empresas em Pemba e região</li>
+                    <li>Reparação de hardware, instalação de SO (Windows, Linux) e gestão de parques informáticos</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="cv-section">
+            <h2>Formação & Certificações</h2>
+            <div class="cv-grid">
+                <div class="cv-item" style="margin-bottom: 16px;">
+                    <div class="cv-item-header">
+                        <span class="cv-item-title">Diploma em Gestão de Armazéns e Logística</span>
+                        <span class="cv-item-date">2026</span>
+                    </div>
+                    <div class="cv-item-place">Plataforma Alison, Galway, Irlanda (Online)</div>
+                </div>
+                <div class="cv-item" style="margin-bottom: 16px;">
+                    <div class="cv-item-header">
+                        <span class="cv-item-title">Técnico de Laboratório e Análises Clínicas</span>
+                        <span class="cv-item-date">Fev 2019 — Dez 2020</span>
+                    </div>
+                    <div class="cv-item-place">Instituto Técnico de Moçambique, Maputo</div>
+                </div>
+                <div class="cv-item" style="margin-bottom: 16px;">
+                    <div class="cv-item-header">
+                        <span class="cv-item-title">Montagem e Reparação de Computadores</span>
+                        <span class="cv-item-date">Abr 2018 — Nov 2018</span>
+                    </div>
+                    <div class="cv-item-place">Tecnicol Moçambique, Lda, Maputo</div>
+                </div>
+                <div class="cv-item" style="margin-bottom: 16px;">
+                    <div class="cv-item-header">
+                        <span class="cv-item-title">Ensino Médio (12.ª Classe)</span>
+                        <span class="cv-item-date">2017</span>
+                    </div>
+                    <div class="cv-item-place">Escola Secundária Geral de Inhaca, Ilha de Inhaca</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cv-section">
+            <h2>Certificações Internacionais (Alison, 2026)</h2>
+            <div class="cv-taglist">
+                <span class="cv-tag">Project Management (PMBOK)</span>
+                <span class="cv-tag">Advanced Modern Application Development</span>
+                <span class="cv-tag">GDPR e Protecção de Dados</span>
+                <span class="cv-tag">Computer Networking — OSI Model & LAN</span>
+                <span class="cv-tag">CCNA — Noções Básicas de Cisco</span>
+                <span class="cv-tag">Operação de Drones</span>
+                <span class="cv-tag">Segurança com CFTV</span>
+                <span class="cv-tag">Estratégias para Criação de Sites de Negócios</span>
+            </div>
+        </section>
+
+        <section class="cv-section">
+            <h2>Competências Técnicas</h2>
+            <div class="cv-grid">
+                <div class="cv-skill"><span>Flutter / Dart</span><span>Avançado</span></div>
+                <div class="cv-skill"><span>Node.js / JavaScript</span><span>Avançado</span></div>
+                <div class="cv-skill"><span>HTML / CSS / Web</span><span>Avançado</span></div>
+                <div class="cv-skill"><span>SQL / SQLite / Turso</span><span>Avançado</span></div>
+                <div class="cv-skill"><span>Git / GitHub / CI/CD</span><span>Intermédio</span></div>
+                <div class="cv-skill"><span>Redes Starlink & PtP</span><span>Avançado</span></div>
+                <div class="cv-skill"><span>Cabeamento Estruturado</span><span>Avançado</span></div>
+                <div class="cv-skill"><span>CFTV & Segurança</span><span>Intermédio</span></div>
+                <div class="cv-skill"><span>Windows / Linux / SO</span><span>Avançado</span></div>
+                <div class="cv-skill"><span>Hardware & Reparação</span><span>Avançado</span></div>
+                <div class="cv-skill"><span>Primavera ERP</span><span>Intermédio</span></div>
+                <div class="cv-skill"><span>Operações com Drones</span><span>Intermédio</span></div>
+            </div>
+        </section>
+
+        <section class="cv-section">
+            <h2>Idiomas</h2>
+            <div class="cv-grid">
+                <div class="cv-skill"><span>Português</span><span>Nativo</span></div>
+                <div class="cv-skill"><span>Inglês</span><span>Intermédio</span></div>
+                <div class="cv-skill"><span>Macua / Nhungue</span><span>Nativo</span></div>
+                <div class="cv-skill"><span>Francês</span><span>Básico</span></div>
+            </div>
+        </section>
+
+        <section class="cv-section">
+            <h2>Contacto</h2>
+            <div class="cv-grid" style="gap: 8px 40px;">
+                <div class="cv-skill"><span>WhatsApp</span><a href="https://wa.me/258846166104" style="color: var(--text-muted); text-decoration: none;">+258 84 616 6104</a></div>
+                <div class="cv-skill"><span>Telefone</span><span style="color: var(--text-muted);">+258 87 001 8297</span></div>
+                <div class="cv-skill"><span>Email</span><a href="mailto:adamgyadamo@gmail.com" style="color: var(--text-muted); text-decoration: none;">adamgyadamo@gmail.com</a></div>
+                <div class="cv-skill"><span>LinkedIn</span><a href="https://linkedin.com/in/adamgy-adamo-tembe-901a17229" target="_blank" style="color: var(--text-muted); text-decoration: none;">linkedin.com/in/adamgy-adamo-tembe</a></div>
+            </div>
+        </section>
+
+        <div class="cv-footer">
+            <span>Adamgy Adamo Tembe — 2026</span>
+            <button class="print-btn" onclick="window.print()">Imprimir / Guardar PDF</button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
