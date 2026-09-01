@@ -1,4 +1,5 @@
 const CACHE_NAME = 'adamgy-portfolio-v2';
+
 const assets = [
   './',
   './index.html',
@@ -11,7 +12,8 @@ const assets = [
   './dash-script.js',
   './termos.html',
   './privacidade.html',
-  './manifest.json'
+  './manifest.json',
+  './assets/images/adamgy.png'
 ];
 
 self.addEventListener('install', e => {
@@ -26,7 +28,9 @@ self.addEventListener('activate', e => {
   e.waitUntil(
     caches.keys().then(keys => {
       return Promise.all(
-        keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
+        keys
+          .filter(key => key !== CACHE_NAME)
+          .map(key => caches.delete(key))
       );
     })
   );
