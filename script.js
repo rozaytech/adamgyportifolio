@@ -111,38 +111,54 @@ if (canvas) {
     animateParticles();
 }
 
-// ===== CUSTOM CURSOR =====
+// ===== CUSTOM CURSOR (CORRIGIDO) =====
 const cursorDot = document.querySelector('.cursor-dot');
 const cursorOutline = document.querySelector('.cursor-outline');
 
 if (cursorDot && cursorOutline && window.matchMedia('(pointer: fine)').matches) {
-    let outlineX = 0, outlineY = 0;
-    let dotX = 0, dotY = 0;
+    let outlineX = window.innerWidth / 2;
+    let outlineY = window.innerHeight / 2;
+    let dotX = window.innerWidth / 2;
+    let dotY = window.innerHeight / 2;
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let visible = false;
 
+    // Mostrar cursor assim que o mouse se mover
     document.addEventListener('mousemove', (e) => {
-        dotX = e.clientX;
-        dotY = e.clientY;
-        
-        cursorDot.style.left = `${dotX}px`;
-        cursorDot.style.top = `${dotY}px`;
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        if (!visible) {
+            visible = true;
+            document.body.classList.add('cursor-visible');
+        }
     });
 
+    // Suavizar movimento
     function animateCursor() {
-        outlineX += (dotX - outlineX) * 0.15;
-        outlineY += (dotY - outlineY) * 0.15;
-        
-        cursorOutline.style.left = `${outlineX}px`;
-        cursorOutline.style.top = `${outlineY}px`;
-        
+        dotX += (mouseX - dotX) * 0.35;
+        dotY += (mouseY - dotY) * 0.35;
+        outlineX += (mouseX - outlineX) * 0.12;
+        outlineY += (mouseY - outlineY) * 0.12;
+
+        cursorDot.style.transform = `translate(${dotX}px, ${dotY}px) translate(-50%, -50%)`;
+        cursorOutline.style.transform = `translate(${outlineX}px, ${outlineY}px) translate(-50%, -50%)`;
+
         requestAnimationFrame(animateCursor);
     }
     animateCursor();
 
-    // Hover effect on interactive elements
-    const interactives = document.querySelectorAll('a, button, .project-item, .service-row, .channel, input, select, textarea');
+    // Hover em elementos interativos
+    const interactives = document.querySelectorAll('a, button, input, select, textarea, .project-item, .service-row, .channel, .service-card');
     interactives.forEach(el => {
         el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
         el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+
+    // Se o mouse sair da janela, esconder
+    document.addEventListener('mouseleave', () => {
+        visible = false;
+        document.body.classList.remove('cursor-visible');
     });
 }
 
