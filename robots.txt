@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /login.html
+Disallow: /dashboard.html
+Disallow: /admin/
+
+Sitemap: https://adamgy.vmpsaas.com/sitemap.xml
