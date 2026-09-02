@@ -111,7 +111,7 @@ if (canvas) {
     animateParticles();
 }
 
-// ===== CUSTOM CURSOR (CORRIGIDO) =====
+// ===== CUSTOM CURSOR (CORRIGIDO — visível por padrão) =====
 const cursorDot = document.querySelector('.cursor-dot');
 const cursorOutline = document.querySelector('.cursor-outline');
 
@@ -122,16 +122,21 @@ if (cursorDot && cursorOutline && window.matchMedia('(pointer: fine)').matches) 
     let dotY = window.innerHeight / 2;
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
-    let visible = false;
 
-    // Mostrar cursor assim que o mouse se mover
+    // Quando o rato se move, atualizar posição
     document.addEventListener('mousemove', (e) => {
         mouseX = e.clientX;
         mouseY = e.clientY;
-        if (!visible) {
-            visible = true;
-            document.body.classList.add('cursor-visible');
-        }
+    });
+
+    // Quando o rato sai da janela, esconder
+    document.addEventListener('mouseleave', () => {
+        document.body.classList.add('cursor-hidden');
+    });
+
+    // Quando o rato volta, mostrar
+    document.addEventListener('mouseenter', () => {
+        document.body.classList.remove('cursor-hidden');
     });
 
     // Suavizar movimento
@@ -153,12 +158,6 @@ if (cursorDot && cursorOutline && window.matchMedia('(pointer: fine)').matches) 
     interactives.forEach(el => {
         el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
         el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-    });
-
-    // Se o mouse sair da janela, esconder
-    document.addEventListener('mouseleave', () => {
-        visible = false;
-        document.body.classList.remove('cursor-visible');
     });
 }
 

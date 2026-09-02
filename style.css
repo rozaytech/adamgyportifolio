@@ -51,7 +51,7 @@ body {
     pointer-events: none;
 }
 
-/* ===== CUSTOM CURSOR (melhorado) ===== */
+/* ===== CURSOR (visível por padrão, esconde quando rato sai) ===== */
 .cursor-dot,
 .cursor-outline {
     position: fixed;
@@ -59,7 +59,7 @@ body {
     left: 0;
     pointer-events: none;
     z-index: 99999;
-    opacity: 0;
+    opacity: 1;
     transform: translate(-50%, -50%);
     transition: opacity 0.2s;
 }
@@ -81,10 +81,10 @@ body {
     backdrop-filter: blur(2px);
 }
 
-/* Quando o mouse se move, o cursor aparece */
-body.cursor-visible .cursor-dot,
-body.cursor-visible .cursor-outline {
-    opacity: 1;
+/* Quando o rato sai da janela, esconder */
+body.cursor-hidden .cursor-dot,
+body.cursor-hidden .cursor-outline {
+    opacity: 0;
 }
 
 /* Hover em elementos interativos */
